@@ -1,0 +1,57 @@
+import { Color, MeshStandardMaterial } from "three";
+
+const matteMaterial = (hex: string) =>
+  new MeshStandardMaterial({
+    color: new Color(hex),
+    roughness: 1,
+    metalness: 0
+  });
+
+export const palette = {
+  boardTop: matteMaterial("#789b56"),
+  boardSide: matteMaterial("#735132"),
+  boardOutline: matteMaterial("#d4d8bf"),
+  settlementGrass: matteMaterial("#98c45e"),
+  settlementDirt: matteMaterial("#7d5732"),
+  settlementPath: matteMaterial("#c8b186"),
+  settlementStone: matteMaterial("#d7d1be"),
+  settlementStoneShade: matteMaterial("#9b9688"),
+  settlementWood: matteMaterial("#c58a49"),
+  settlementWoodShade: matteMaterial("#8f6034"),
+  settlementRoofRed: matteMaterial("#c97558"),
+  settlementRoofBlue: matteMaterial("#7a8fb8"),
+  settlementRoofGold: matteMaterial("#e0bb67"),
+  settlementCanvas: matteMaterial("#e8cf9d"),
+  settlementCrop: matteMaterial("#8cb145"),
+  settlementCropGold: matteMaterial("#cdb357"),
+  settlementBanner: matteMaterial("#5f85c8"),
+  settlementShrub: matteMaterial("#6f9d45"),
+  settlementWater: matteMaterial("#78c7d0"),
+  featureGrass: matteMaterial("#537329"),
+  grasslandGrass: matteMaterial("#9dc45d"),
+  grasslandDirt: matteMaterial("#7e5732"),
+  grasslandRock: matteMaterial("#a7a18a"),
+  grasslandRockShade: matteMaterial("#8c8672"),
+  forestGrass: matteMaterial("#7aaa4f"),
+  forestDirt: matteMaterial("#7b5530"),
+  forestLeafA: matteMaterial("#47732d"),
+  forestLeafB: matteMaterial("#5b8b37"),
+  forestTrunk: matteMaterial("#6a4728"),
+  hillGrass: matteMaterial("#8db457"),
+  hillDirt: matteMaterial("#76502d"),
+  hillStone: matteMaterial("#939b7a"),
+  hillStoneShade: matteMaterial("#7f8667"),
+  mountainGrass: matteMaterial("#83a34f"),
+  mountainDirt: matteMaterial("#74512f"),
+  mountainStone: matteMaterial("#b9b3a1"),
+  mountainStoneShade: matteMaterial("#8f8b7f"),
+  waterBank: matteMaterial("#86ab5a"),
+  waterDirt: matteMaterial("#75512f"),
+  waterSurface: matteMaterial("#72c0cf"),
+  waterSurfaceShade: matteMaterial("#5ba6b8"),
+  desertSand: matteMaterial("#d7b064"),
+  desertSandShade: matteMaterial("#c59a53"),
+  desertRock: matteMaterial("#af8a54"),
+  desertDirt: matteMaterial("#8a6236"),
+  accentGlow: matteMaterial("#95c35f")
+};
