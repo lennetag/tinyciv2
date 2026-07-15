@@ -1,0 +1,256 @@
+:root {
+  color-scheme: light;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.75), transparent 35%),
+    linear-gradient(180deg, #a6d7e8 0%, #8fc6da 45%, #6fb38f 100%);
+  color: #f5f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.shell {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.canvas-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.canvas-layer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hud,
+.placed-button,
+.side-panel,
+.offer-bar,
+.restart-button {
+  position: absolute;
+  z-index: 2;
+}
+
+.top-hud {
+  top: max(16px, env(safe-area-inset-top));
+  left: 12px;
+  right: 124px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.capsule,
+.offer-shell,
+.restart-button,
+.placed-button,
+.side-panel {
+  border: 2px solid rgba(17, 40, 61, 0.6);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(20, 44, 69, 0.96), rgba(12, 29, 46, 0.94));
+  box-shadow: 0 12px 30px rgba(9, 21, 32, 0.18);
+}
+
+.capsule {
+  min-width: 92px;
+  padding: 10px 14px;
+  display: grid;
+  gap: 2px;
+}
+
+.capsule-label,
+.offer-meta {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(224, 237, 247, 0.7);
+}
+
+.placed-button {
+  top: max(16px, env(safe-area-inset-top));
+  right: 12px;
+  min-width: 104px;
+  padding: 10px 14px;
+  color: #f2fbff;
+  display: grid;
+  gap: 2px;
+  text-align: left;
+}
+
+.placed-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(224, 237, 247, 0.7);
+}
+
+.side-panel {
+  top: max(78px, calc(env(safe-area-inset-top) + 62px));
+  right: 12px;
+  width: min(300px, calc(100vw - 24px));
+  max-height: min(56vh, 520px);
+  padding: 14px;
+  color: #d9ebf5;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(18px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.side-panel.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.side-panel-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.side-panel-title,
+.side-panel-score {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.bag-list {
+  display: grid;
+  gap: 8px;
+  max-height: min(40vh, 390px);
+  overflow: auto;
+}
+
+.bag-row {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.bag-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.bag-name,
+.bag-count,
+.bag-empty,
+.bag-footer {
+  font-size: 0.94rem;
+}
+
+.bag-count {
+  color: #fff3b8;
+  font-weight: 700;
+}
+
+.bag-empty,
+.bag-footer {
+  color: #d9ebf5;
+}
+
+.bag-footer {
+  margin-top: 12px;
+}
+
+.offer-bar {
+  left: 12px;
+  right: 12px;
+  bottom: max(14px, env(safe-area-inset-bottom));
+}
+
+.offer-shell {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px;
+}
+
+.offer-card {
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 14px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--tile-color) 35%, #fff 65%), var(--tile-color)),
+    linear-gradient(180deg, var(--tile-accent), var(--tile-color));
+  color: #142231;
+  display: grid;
+  gap: 2px;
+  text-align: left;
+  transform: translateY(0);
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.offer-card.selected {
+  border-color: #fff7cf;
+  box-shadow: 0 8px 24px rgba(255, 244, 181, 0.35);
+  transform: translateY(-3px);
+}
+
+.offer-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.restart-button {
+  right: 12px;
+  bottom: 150px;
+  padding: 10px 16px;
+  color: #f2fbff;
+}
+
+@media (max-width: 768px) {
+  .top-hud {
+    right: 116px;
+    gap: 6px;
+  }
+
+  .capsule {
+    min-width: 82px;
+    padding: 8px 12px;
+  }
+
+  .restart-button {
+    bottom: 150px;
+  }
+
+  .side-panel {
+    top: auto;
+    bottom: 214px;
+    max-height: min(42vh, 360px);
+  }
+}
